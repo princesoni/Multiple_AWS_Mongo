@@ -1,0 +1,9 @@
+{
+    "appdata": {
+        "host_name": "api.cloud.appcelerator.com",
+        "app_key": "buSNKN8r8TtSgMAv811jdIMZNYnRMHD8",
+        "port": 443,
+        "content_type": "application/json",
+        "controlPort": 8889
+    }
+}
