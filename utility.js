@@ -1,5 +1,6 @@
 var maongoObj=require("./MongoInstance.js");
 var collection= maongoObj.getCollection();
+var ObjectID = require('mongodb').ObjectID;
 module.exports = function utility()
 {
     var https = require('https');
@@ -107,7 +108,7 @@ module.exports = function utility()
 }
 //insert data to db
 function insertToDb (data,done){
-    data._id=new Date().getTime().toString();
+    data._id=new ObjectID();
     collection.insert(data,function (err, inserted) {
       if(err){
             console.log("Error",err)
