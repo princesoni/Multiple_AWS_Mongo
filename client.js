@@ -2,6 +2,22 @@ var maongoObj=require("./MongoInstance.js");
 var MyTestObj;
 var utilitiesObj;
 
+var os = require('os')
+console.log("host name=======",os.hostname())
+
+var interfaces = os.networkInterfaces();
+var addresses = [];
+for (k in interfaces) {
+    for (k2 in interfaces[k]) {
+        var address = interfaces[k][k2];
+        if (address.family == 'IPv4' && !address.internal) {
+            addresses.push(address.address)
+        }
+    }
+}
+
+console.log(addresses)
+
 maongoObj.startConnection(collectionInit);
 
 var colors = require('colors');
@@ -17,6 +33,8 @@ var stats = {
     inproc: 0
 };
 var requestStats = {
+    machineName: os.hostname(),
+    ip: addresses,
     clients: 0,
     inprocReq: 0,
     errors_req: 0,
