@@ -1,6 +1,6 @@
 {
     "mongo": {
-        "host": "ec2-50-17-4-125.compute-1.amazonaws.com",
+        "host": "ec2-184-73-37-210.compute-1.amazonaws.com",
         "port": 27017,
         "database_name": "Appce",
         "collection_name": "AcsLoadData",
