@@ -4,7 +4,10 @@ var utilitiesObj;
 
 var os = require('os')
 console.log("host name=======",os.hostname())
-
+var uniqueSessionId = "session_" + Math.random().toString(36).slice(2);
+var sessionObj= {
+    sessionId: uniqueSessionId
+}
 var interfaces = os.networkInterfaces();
 var addresses = [];
 for (k in interfaces) {
@@ -35,6 +38,7 @@ var stats = {
 var requestStats = {
     machineName: os.hostname(),
     ip: addresses,
+    sessionId: uniqueSessionId ,
     clients: 0,
     inprocReq: 0,
     errors_req: 0,
@@ -138,6 +142,10 @@ http.createServer(function (req, res) {
                 config.n = queryUrl.n;
             config.concurrency = queryUrl.c;
             return res.end(JSON.stringify(config) + "\n");
+        }
+         else if (url.pathname === '/getSessionId') {
+
+            return res.end(JSON.stringify(sessionObj) + "\n");
         }
         else if (url.pathname === '/restart') {
             // Restart process on '/restart'
